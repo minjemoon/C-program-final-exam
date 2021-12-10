@@ -9,9 +9,6 @@ char fname[100] = "C:\\Temp\\lotto.txt"; // 파일 경로 및 이름
 int type, random_num, lotto[6]; // type = 로또 유형(최대 숫자), random_num(난수), lotto(난수 6개)
 
 int main(void) {
-	
-	int i, count = 0; // 난수 중복과 할당을 위한 변수 
-
 	printf("로또 유형을 입력하세요(숫자를입력하세요): "); // 최대 숫자를 입력받음
 	scanf("%d", &type); // type 변수에 할당
 
