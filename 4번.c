@@ -2,18 +2,18 @@
 #include <stdio.h>
 #include <stdlib.h> // C 표준 유틸리티 함수들을 모아놓은 헤더파일 (rand 사용을 위함)
 
-void randNum(int maxnumber); // 난수 발생 함수
+void randNum(int maxnumber); // 난수 생성 함수
 void createFile(int numberlist[]); // 파일 생성하는 함수
 
 char fname[100] = "C:\\Temp\\lotto.txt"; // 파일 경로 및 이름
-int type, random_num, lotto[6]; // type = 로또 유형(최대 숫자), random_num(난수), lotto(난수 6개)
+int type, random_num, lotto[6]; // type(로또 유형 = 최대 숫자), random_num(난수), lotto(난수 6개)
 
 int main(void) {
 	printf("로또 유형을 입력하세요(숫자를입력하세요): "); // 최대 숫자를 입력받음
 	scanf("%d", &type); // type 변수에 할당
 
-	randNum(type);
-	createFile(lotto);
+	randNum(type); // 난수 생성]
+	createFile(lotto); // 파일 생성
 }
 
 /*
@@ -63,11 +63,11 @@ void createFile(int numberlist[]) {
 
 	if (fp == NULL) {
 		printf("파일 열기 실패\n");
-		exit(1);
+		exit(1); // 프로그램 종료
 	}
-	else {
-		int buf1;
-		char buf2[10];
+	else { 
+		int buf1; // 난수를 받기 위한 임시 변수
+		char buf2[10]; // 난수를 받기 위한 변수
 
 		/* txt 파일에 생성된 6개의 난수 입력 */
 		fputs("선택된 번호는 다음과 같습니다: ", fp);

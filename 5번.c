@@ -11,7 +11,6 @@ int type, random_num, lotto[6], mylotto[6];
 // type(로또 유형 = 최대 숫자), random_num(난수), lotto(난수 6개), mylotto(파일속 숫자 6개)
 
 int main(void) {
-
 	printf("로또 결과 저장 경로를 입력하세요: "); // 파일 경로 입력받음
 	gets_s(fname, 100); // 입력된 파일 경로 fname에 저장
 	readFile(fname); // 파일 읽기
@@ -101,8 +100,8 @@ void readFile(char filename[]) {
 void compareNum(int lotto[], int mylotto[]) {
 	int result[6], sum = 0; // 당첨 확인용 변수
 
-	/* lotto와 mylotto에 있는 수들을 비교하는 반복문*/
-	/* lotto의 i 인덱스에 있는 값과 mylotto의 j 인덱스에 있는 값이 같은 경우
+	/* lotto와 mylotto에 있는 수들을 비교하는 반복문
+	   lotto의 i 인덱스에 있는 값과 mylotto의 j 인덱스에 있는 값이 같은 경우
 	   result의 i 인덱스에 1을 할당함 => result 리스트에 요소의 합이 6이 된다면 비교한 숫자가 전부 일치함*/
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 6; j++) {

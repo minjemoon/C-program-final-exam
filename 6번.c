@@ -80,7 +80,7 @@ void randNum(int maxnumber, int runtimes) {
 	3. statlist = 생성된 숫자에 횟수 통계 스택
 */
 void statistics(int statmaxnum, int n, int statlist[]) {
-	int max = 0; // max(가장 많이 나온 횟수)
+	int max = 0; // max(가장 많이 나온 횟수 받는 변수)
 	
 	/* 로또 n회 수행 결과 출력하는 반복문 */
 	printf("로또를 %d회 수행한 결과 통계입니다\n", n);

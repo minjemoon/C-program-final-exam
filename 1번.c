@@ -58,7 +58,7 @@ void encrypt(char plaintext[], int shift) {
 	2. shift = 암호키
 */
 void createFile(char ciphertext[], int shift) {
-	FILE* fp = NULL; // FILE을 가리키는 포인터 fp 선언
+	FILE *fp = NULL; // FILE을 가리키는 포인터 fp 선언
 	fp = fopen(fname, "w"); // 쓰기 모드로 새로운 파일을 생성(이미 존재하는 경우 기존 내용 삭제)
 
 	if (fp == NULL) {
