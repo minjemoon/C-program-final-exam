@@ -15,7 +15,7 @@ int main(void) {
 	scanf("%d", &shift); // 입력된 암호키 shift에 저장
 
 	getchar(); // scanf의 남은 버퍼(\n)를 버림 -> gets_s 사용하기 위함
-	
+
 	printf("평문을 입력하세요: ");
 	gets_s(plain, 50); // 입력된 평문 plain에 저장
 
@@ -30,20 +30,21 @@ int main(void) {
 	1. plaintext = 평문
 	2. shift = 암호키
 */
-void encrypt(char plaintext[], int shift) { 
-
+void encrypt(char plaintext[], int shift) {
+	int i = 0;
 	/* plaintext[i]가 소문자인 경우 shift 만큼 더해서 암호화 진행
 		a~z = 97~122(ASCII코드)  -> plaintext[i]에서 a를 빼면 a~z = 0~25의 범위를 갖게 됨
 		이후 %(나머지연산)을 통해 알파벳 범위를 넘어가는 것을 방지할 수 있음
 		임의로 변경한 범위를 원상태로 복구하기 위해 다시 a를 더함
 	*/
-	for (int i = 0; plaintext[i] != '\0'; i++) {
+	while (plaintext[i] != '\0') {
 		if (plaintext[i] >= 'a' && plaintext[i] <= 'z') {
 			cipher[i] = (plaintext[i] - 'a' + shift) % 26 + 'a';
 		}
 		else { // 알파벳 소문자가 아닌 것들은 원본 유지
-			cipher[i] = plaintext[i]; 
+			cipher[i] = plaintext[i];
 		}
+		i++;
 	}
 
 	printf("암호화된 문자열: %s \n", cipher);
