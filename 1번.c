@@ -14,13 +14,13 @@ int main(void) {
 	printf("암호키를 입력하세요(숫자1~9): ");
 	scanf("%d", &shift); // 입력된 암호키 shift에 저장
 
-	getchar(); // scanf의 남은 버퍼(\n)를 버림 -> gets_s 사용하기 위힘
+	getchar(); // scanf의 남은 버퍼(\n)를 버림 -> gets_s 사용하기 위함
 	
 	printf("평문을 입력하세요: ");
 	gets_s(plain, 50); // 입력된 평문 plain에 저장
 
 	encrypt(plain, shift); // 평문(plain)을 암호키(shift)에 해당되게 암호화
-	createFile(cipher, shift);
+	createFile(cipher, shift); //암호키(shift)와 암호문(cipher) txt 파일에 저장
 }
 
 /*
@@ -32,12 +32,17 @@ int main(void) {
 */
 void encrypt(char plaintext[], int shift) { 
 
+	/* plaintext[i]가 소문자인 경우 shift 만큼 더해서 암호화 진행
+		a~z = 97~122(ASCII코드)  -> plaintext[i]에서 a를 빼면 a~z = 0~25의 범위를 갖게 됨
+		이후 %(나머지연산)을 통해 알파벳 범위를 넘어가는 것을 방지할 수 있음
+		임의로 변경한 범위를 원상태로 복구하기 위해 다시 a를 더함
+	*/
 	for (int i = 0; plaintext[i] != '\0'; i++) {
-		if (plaintext[i] >= 97 && plaintext[i] <= 122) {
+		if (plaintext[i] >= 'a' && plaintext[i] <= 'z') {
 			cipher[i] = (plaintext[i] - 'a' + shift) % 26 + 'a';
 		}
-		else {
-			cipher[i] = plaintext[i];
+		else { // 알파벳 소문자가 아닌 것들은 원본 유지
+			cipher[i] = plaintext[i]; 
 		}
 	}
 
@@ -72,7 +77,5 @@ void createFile(char ciphertext[], int shift) {
 		fputc(' ', fp);
 		fputs(cipher, fp); // 파일에 암호문 입력
 	}
-
 	fclose(fp);	// 파일 닫기
-	return 0;
 }
